@@ -4,8 +4,8 @@
 # https://aka.ms/yaml
 
 schedules:
-- cron: "*/15 * * * *"
-  displayName: DPeriodic scan every 15 mins
+- cron: "*/10 * * * *"
+  displayName: Periodic scan every 5 mins
   branches:
     include:
     - next
