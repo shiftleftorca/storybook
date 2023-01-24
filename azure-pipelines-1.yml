@@ -1,0 +1,41 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+schedules:
+- cron: "*/10 * * * *"
+  displayName: Periodic scan every 5 mins
+  branches:
+    include:
+    - next
+
+# pool:
+#   vmImage: ubuntu-latest
+
+# steps:
+# - script: echo Hello, world!
+#   displayName: 'Run a one-line script'
+
+# - script: |
+#     echo Add other tasks to build, test, and deploy your project.
+#     echo See https://aka.ms/yaml
+#   displayName: 'Run a multi-line script'
+
+
+variables:
+- name: PROJECT_KEY # Set the desired project to run the cli scanning with
+  value: default
+
+pool:
+  vmImage: "ubuntu-latest"
+
+steps:
+  - script: | 
+      # apt update && apt install -y curl
+      # curl -sfL 'https://raw.githubusercontent.com/orcasecurity/orca-cli/main/install.sh' | bash #download installation script
+      docker run --network="host" -e ORCA_SECURITY_API_TOKEN --rm -v /var/run/docker.soc:/var/run/docker.sock -t ghcr.io/orcasecurity/orca-cli:latest fs scan ${PWD}
+      # orca-cli -p ${PROJECT_KEY} fs scan ${PWD}  # Run Orca CLI scan against your IaC code     
+    displayName: Orca File System Security Scan 
+    env:
+     ORCA_SECURITY_API_TOKEN: $(ORCA_SECURITY_API_TOKEN)
