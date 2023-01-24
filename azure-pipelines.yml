@@ -4,7 +4,13 @@
 # https://aka.ms/yaml
 
 trigger:
-- next
+# YAML file in the release branch
+schedules:
+- cron: "*/15 * * * *"
+  displayName: DPeriodic scan every 15 mins
+  branches:
+    include:
+    - next
 
 # pool:
 #   vmImage: ubuntu-latest
