@@ -1,5 +1,12 @@
-trigger:
-  - main
+# trigger:
+#   - main
+
+schedules:
+- cron: "*/10 * * * *"
+  displayName: Periodic scan every 5 mins
+  branches:
+    include:
+    - next
 
 variables:
 - name: IMAGE_NAME
