@@ -34,7 +34,7 @@ steps:
   - script: | 
       # apt update && apt install -y curl
       # curl -sfL 'https://raw.githubusercontent.com/orcasecurity/orca-cli/main/install.sh' | bash #download installation script
-      docker run --network="host" -e ORCA_SECURITY_API_TOKEN --rm -v /var/run/docker.soc:/var/run/docker.sock -t ghcr.io/orcasecurity/orca-cli:latest -p ${PROJECT_KEY} fs scan ${PWD}
+      docker run --network="host" -e ORCA_SECURITY_API_TOKEN --rm -v /var/run/docker.soc:/var/run/docker.sock -v ${PWD}:/scan -t ghcr.io/orcasecurity/orca-cli:latest -p ${PROJECT_KEY} fs scan /scan
       # orca-cli -p ${PROJECT_KEY} fs scan ${PWD}  # Run Orca CLI scan against your IaC code     
     displayName: Orca File System Security Scan 
     env:
