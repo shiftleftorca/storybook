@@ -29,5 +29,5 @@ steps:
       orca-cli -p ${PROJECT_KEY} image scan ${IMAGE_NAME} 
     displayName: Orca Image Scan 
     env:
-     ORCA_SECURITY_API_TOKEN: ORCA_SECURITY_API_TOKEN
+     ORCA_SECURITY_API_TOKEN: $(ORCA_SECURITY_API_TOKEN)
      ORCA_SECURITY_CONTAINER_DAEMON_HOST: "unix:///var/run/docker.sock"
