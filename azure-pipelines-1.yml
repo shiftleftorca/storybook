@@ -3,6 +3,8 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+trigger:
+  - next
 # schedules:
 # - cron: "*/10 * * * *"
 #   displayName: Periodic scan every 5 mins
