@@ -12,7 +12,7 @@ variables:
 - name: IMAGE_NAME
   value: docker.io/neilcar/tomcat:3.0.68
 - name: PROJECT_KEY # Set the desired project to run the cli scanning with
-  value: default
+  value: CCOE-IAC #default
 
 pool:
   vmImage: "ubuntu-latest"
